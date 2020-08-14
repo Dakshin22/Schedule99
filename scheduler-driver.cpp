@@ -38,7 +38,7 @@ int main()
       cin >> opt >> temp >> time >> temp >> duration;
       makeUppercase(opt);
       duration -= time;
-      // cout << opt << temp << time << temp << duration;
+     
       if (opt == FREE)
         cout << "Cannot add event " << FREE << ":  use cancel instead" << endl;
       else if (schedule.isAvailable(time, duration))
