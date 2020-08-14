@@ -25,6 +25,8 @@ cancel TIME
 
 (e.g. cancel 2)
 
+After each modification the new schedule will print.
+
 ## Merging an Event
 Any time a new event is added of the same name as an adjacent event, those two nodes will merge into one node. If the user's current schedule has two of the same event on either side of a FREE block, and adds an event of the same name in place of that FREE block, all three nodes will merge into one node.
 
@@ -33,4 +35,4 @@ The user can replace an event by cancelling the event and adding another event a
 
 # Challenges
 
-There were many cases that I did not anticipate when starting this project. For example, adding an event in the beggining, middle, and end of a free period all require different ways of rearrange the DLL in terms of the number of and locations of new nodes. Also, adding an event of the same name in the beggining, end or in between two events all require rearranging the DLL differently.
+There were many cases that I did not anticipate when starting this project. For example, adding an event in the beggining, middle, and end of a free period all require different ways of rearrange the DLL in terms of the number of and locations of new nodes. Also, adding an event of the same name in the beginning, end or in between two events all require rearranging the DLL differently.
