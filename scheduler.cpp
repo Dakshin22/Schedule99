@@ -5,7 +5,6 @@ using namespace std;
 // Made by Dakshin Rathan
 // this is a source file for a scheduling application that makes use of a doubly linked list
 
-
 bool Scheduler::isAvailable(unsigned start, unsigned duration) const
 {
     if (start < 0 || start > 99 || duration < 0)
@@ -71,7 +70,7 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
             //case 1: Add event at beginning of schedule, (change head pointer)
             else if (start == 0)
             {
-                
+
                 node->next = temp;
                 temp->prev = node;
                 this->head = node;
@@ -93,7 +92,6 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
             //case 2b: Add event at end of free period
             else if (start > tempStart && start + duration == tempEnd)
             {
-                
 
                 if (temp->next == nullptr)
                 {
@@ -116,7 +114,7 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
             //case 3: add event in the middle of free period
             else if (start > tempStart && start + duration < tempEnd)
             {
-                
+
                 int origLength = temp->length;
                 ScheduleNode *freeNode = new ScheduleNode("FREE", 1);
                 if (temp->next != nullptr)
@@ -162,7 +160,6 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
             //case 4: Add event that has the same name before another event (merge)
             else if (temp->next->name == node->name && start + duration == tempEnd)
             {
-                
 
                 node->next = temp->next;
                 node->prev = temp;
@@ -175,7 +172,7 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
             //case 6: Add event that has the same name after another event (merge)
             else if (temp->prev->name == node->name && start == tempStart)
             {
-                
+
                 node->prev = temp->prev;
                 node->next = temp;
                 temp->prev->next = node;
@@ -198,13 +195,13 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
 
         if (mergePtr->length == 100 || mergePtr->next == nullptr)
         {
-            
+
             break;
         }
         while (mergePtr->name == mergePtr->next->name)
         {
             mergePtr->merge(mergePtr->next);
-            
+
             if (mergePtr->next == nullptr)
             {
                 break;
@@ -245,13 +242,13 @@ void Scheduler::free(unsigned start)
 
         if (mergePtr->length == 100 || mergePtr->next == nullptr)
         {
-            
+
             break;
         }
         while (mergePtr->name == mergePtr->next->name)
         {
             mergePtr->merge(mergePtr->next);
-            
+
             if (mergePtr->next == nullptr)
             {
                 break;
@@ -283,7 +280,7 @@ void Scheduler::printSchedule() const
 //optional
 void ScheduleNode::merge(ScheduleNode *other)
 {
-    
+
     if (other->next != nullptr)
     {
         this->next = other->next;
@@ -299,10 +296,10 @@ void ScheduleNode::merge(ScheduleNode *other)
     delete other;
 }
 
-Scheduler:: ~Scheduler()
+Scheduler::~Scheduler()
 {
-    
-    while(head->next != nullptr)
+
+    while (head->next != nullptr)
     {
         head = head->next;
         delete head->prev;

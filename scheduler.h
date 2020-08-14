@@ -13,33 +13,41 @@ const string FREE = "FREE";
 class Scheduler;
 class ScheduleNode;
 
-
-
 class ScheduleNode
 {
   friend Scheduler;
+
 private:
   string name;
   unsigned length;
-  ScheduleNode* prev;
-  ScheduleNode* next;
+  ScheduleNode *prev;
+  ScheduleNode *next;
+
 public:
-  ScheduleNode(string name, unsigned len = 0) : name(name) 
-    { length = len; next = prev = nullptr; cout << "CREATE" << endl; }
+  ScheduleNode(string name, unsigned len = 0) : name(name)
+  {
+    length = len;
+    next = prev = nullptr;
+    cout << "CREATE" << endl;
+  }
   ~ScheduleNode() { cout << "DESTROY" << endl; }
-  void merge(ScheduleNode* other);
+  void merge(ScheduleNode *other);
 };
 
 class Scheduler
 {
 private:
-  ScheduleNode* head;
+  ScheduleNode *head;
   unsigned length;
+
 public:
   Scheduler(unsigned len = DEFAULT_LENGTH)
-    { length = len; head = new ScheduleNode(FREE, len); }
+  {
+    length = len;
+    head = new ScheduleNode(FREE, len);
+  }
   bool isAvailable(unsigned start, unsigned duration) const;
-  void schedule(const string& name, unsigned start, unsigned duration);
+  void schedule(const string &name, unsigned start, unsigned duration);
   void free(unsigned start);
   void printSchedule() const;
   ~Scheduler();

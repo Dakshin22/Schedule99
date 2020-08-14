@@ -7,9 +7,9 @@ using namespace std;
 
 // Made by Dakshin Rathan
 
-void makeUppercase(string& str)
+void makeUppercase(string &str)
 {
-  for (char& c : str)
+  for (char &c : str)
     c = toupper(c);
 }
 
@@ -38,27 +38,27 @@ int main()
       cin >> opt >> temp >> time >> temp >> duration;
       makeUppercase(opt);
       duration -= time;
-     // cout << opt << temp << time << temp << duration;
+      // cout << opt << temp << time << temp << duration;
       if (opt == FREE)
         cout << "Cannot add event " << FREE << ":  use cancel instead" << endl;
       else if (schedule.isAvailable(time, duration))
       {
-        
+
         schedule.schedule(opt, time, duration);
         cout << "Added to schedule" << endl;
       }
       else
-        cout << "Scheduling conflict:  not added" << endl; 
-          
+        cout << "Scheduling conflict:  not added" << endl;
+
       schedule.printSchedule();
     }
     else if (cmd == "PRINT")
       schedule.printSchedule();
     cin.clear();
-    cin.ignore(10000,'\n');
+    cin.ignore(10000, '\n');
     cin >> cmd;
     makeUppercase(cmd);
   }
-  
+
   return 0;
 }
