@@ -141,8 +141,7 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
                 added = true;
             }
 
-            //check
-            //case 5: Filling a free spot in between two events of the same name.
+                        //case 5: Filling a free spot in between two events of the same name.
             else if (temp->prev->name == temp->next->name && temp->next->name == node->name && start == tempStart && start + duration == tempEnd)
             {
                 //cout << "\nhere5" << endl;
@@ -217,6 +216,8 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
     }
 }
 
+
+//marks event or block of time as free
 void Scheduler::free(unsigned start)
 {
     ScheduleNode *temp = this->head;
@@ -277,7 +278,7 @@ void Scheduler::printSchedule() const
     }
 }
 
-//optional
+//merges nodes together
 void ScheduleNode::merge(ScheduleNode *other)
 {
 
