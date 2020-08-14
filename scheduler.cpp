@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 using namespace std;
-//Dakshin Rathan
+// Made by Dakshin Rathan
 // this is a source file for a scheduling application that makes use of a doubly linked list
 
 
@@ -37,10 +37,9 @@ bool Scheduler::isAvailable(unsigned start, unsigned duration) const
 
 void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
 {
-    //invalid check
+    //invalid check (checks if duration of event is out of range of the schedule)
     if (duration == 0 || duration > 100 || start >= 100)
     {
-        //cout << "\ninvalid" << endl;
         return;
     }
     ScheduleNode *mergePtr = this->head;
@@ -72,7 +71,7 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
             //case 1: Add event at beginning of schedule, (change head pointer)
             else if (start == 0)
             {
-                //cout << "\nhere1" << endl;
+                
                 node->next = temp;
                 temp->prev = node;
                 this->head = node;
@@ -80,7 +79,7 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
 
                 added = true;
             }
-            //case 2a: Add event at beginnign of free preiod
+            //case 2a: Add event at beginning of free preiod
             else if (start == tempStart && start + duration < tempEnd)
             {
                 node->next = temp;
@@ -94,7 +93,7 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
             //case 2b: Add event at end of free period
             else if (start > tempStart && start + duration == tempEnd)
             {
-                //cout << "\nhere2b" << endl;
+                
 
                 if (temp->next == nullptr)
                 {
@@ -117,7 +116,7 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
             //case 3: add event in the middle of free period
             else if (start > tempStart && start + duration < tempEnd)
             {
-                //cout << "\nhere3" << endl;
+                
                 int origLength = temp->length;
                 ScheduleNode *freeNode = new ScheduleNode("FREE", 1);
                 if (temp->next != nullptr)
@@ -163,7 +162,7 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
             //case 4: Add event that has the same name before another event (merge)
             else if (temp->next->name == node->name && start + duration == tempEnd)
             {
-                //cout << "\nhere4" << endl;
+                
 
                 node->next = temp->next;
                 node->prev = temp;
@@ -176,7 +175,7 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
             //case 6: Add event that has the same name after another event (merge)
             else if (temp->prev->name == node->name && start == tempStart)
             {
-                //cout << "\nhere6" << endl;
+                
                 node->prev = temp->prev;
                 node->next = temp;
                 temp->prev->next = node;
@@ -199,13 +198,13 @@ void Scheduler::schedule(const string &name, unsigned start, unsigned duration)
 
         if (mergePtr->length == 100 || mergePtr->next == nullptr)
         {
-            // cout << "broke1";
+            
             break;
         }
         while (mergePtr->name == mergePtr->next->name)
         {
             mergePtr->merge(mergePtr->next);
-            //cout << "name: " << mergePtr->name << ", length: " << mergePtr->length << endl;
+            
             if (mergePtr->next == nullptr)
             {
                 break;
@@ -246,13 +245,13 @@ void Scheduler::free(unsigned start)
 
         if (mergePtr->length == 100 || mergePtr->next == nullptr)
         {
-            //  cout << "broke";
+            
             break;
         }
         while (mergePtr->name == mergePtr->next->name)
         {
             mergePtr->merge(mergePtr->next);
-            //cout << "name: " << mergePtr->name << ", length: " << mergePtr->length << endl;
+            
             if (mergePtr->next == nullptr)
             {
                 break;
@@ -284,7 +283,7 @@ void Scheduler::printSchedule() const
 //optional
 void ScheduleNode::merge(ScheduleNode *other)
 {
-    //cout << "\nheremerge" << endl;
+    
     if (other->next != nullptr)
     {
         this->next = other->next;
