@@ -1,5 +1,5 @@
 # Overview
-Scheduling application with functionality Add, Delete, Merge, and Replace Events using a Doubly Linked List (DLL)
+Scheduling application with functionality Add, Delete, Merge, and Replace Events using a Doubly Linked List (DLL).
 
 ## A plain schedule
 ![](img/ListExample.png)
@@ -19,7 +19,7 @@ add EVENT from START_TIME to END_TIME
 
 (e.g. add WORK from 2 to 30)
 
-Users can also cancel an event by specifying a time (TIME) and by typing the following command
+Users can also cancel an event by specifying a time (TIME) and by typing the following command:
 
 cancel TIME
 
