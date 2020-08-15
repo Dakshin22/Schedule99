@@ -1,7 +1,7 @@
 # Overview
 Scheduling application with functionality Add, Delete, Merge, and Replace Events using a Doubly Linked List (DLL).
 
-## A plain schedule
+## A Schedule Template
 ![](img/ListExample.png)
 Above is what the general layout of a schedule looks like. Each node of the DLL represents 1 event and has a name and duration. The next node represents the event after the current node. For this project, the duration has arbriatrary units and the entire schedule has a duration limit of 100.
 
