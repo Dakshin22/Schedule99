@@ -7,11 +7,11 @@ Above is what the general layout of a schedule looks like. Each node of the DLL 
 
 # How to use
 
-Upon running the program, a default schedule will be stored with a single node with name "FREE" and duration 100. Whenever the user adds events, the parts of the schedule that are not taken up by events will be replaced by nodes with name FREE and with duration of the unoccupied time.
-
-## Basics
+Upon running the program, a default schedule will be stored with a single node with name "FREE" and duration 100 (shown below). Whenever the user adds events, the parts of the schedule that are not taken up by events will be replaced by nodes with name FREE and with duration of the unoccupied time.
 
 ![](img/free.png)
+
+## Basics
 
 Users can add an event by specifiying a name (EVENT), start time (START_TIME) and end time (END_TIME) and by typing the following command:
 
